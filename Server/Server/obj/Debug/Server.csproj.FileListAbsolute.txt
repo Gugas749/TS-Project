@@ -1,0 +1,11 @@
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\Server.exe.config
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\Server.exe
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\Server.pdb
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\ProtocolSI.dll
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\obj\Debug\Server.csproj.Up2Date
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\obj\Debug\Server.exe
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Server\Server\obj\Debug\Server.pdb

@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\server\\server\\clientinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\server\\clientinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\clientinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAqwCYAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAhwHwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T09:05:50.211Z",
               "EditorCaption": ""
