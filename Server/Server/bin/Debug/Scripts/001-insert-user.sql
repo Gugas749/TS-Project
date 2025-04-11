@@ -1,2 +1,2 @@
-INSERT INTO users (IDuser, email, pass, publicKey)
-VALUES (0, @email, @password, @publicKey);
+INSERT INTO users (email, pass, publicKey)
+VALUES ($email$, $password$, $publicKey$);

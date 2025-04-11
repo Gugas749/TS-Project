@@ -145,11 +145,14 @@ namespace Server
                 { "publicKey", encryptKey }
             };
 
+            Console.WriteLine("" + userEmailCrypted + " - " + inputedPassword + " - " + encryptKey);
+
             var upgrader =
                 DeployChanges.To
                     .MySqlDatabase(connectionString)
-                    .WithScriptsFromFileSystem(folderLoc, sqlFilePath => sqlFilePath.Contains("001-insert-user"))
+                    .WithScriptsFromFileSystem(folderLoc)
                     .WithVariables(variables)
+                    .LogToConsole()
                     .LogTo(upgradeLogger)
                     .Build();
 

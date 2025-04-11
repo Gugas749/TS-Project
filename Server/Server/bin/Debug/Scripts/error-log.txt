@@ -116,3 +116,507 @@ Exception: O nome do diretório é inválido.
 [INFO] Checking whether journal table exists
 [INFO] Fetching list of already executed scripts.
 [INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Checking whether journal table exists
+[INFO] MySql exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; MySql error code: ParseError; Number 1064; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 40
+[INFO] DB exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 126
+[ERROR] Upgrade failed due to an unexpected exception: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+Exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[ERROR] [11/04/2025 11:05:44] Migration failed: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>8mX1/G7WapOuzuVdmH6jxPe8KVg+OO6SPt8aud10nJAxJO5gkWYMyQGoFz' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Journal table does not exist
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Checking whether journal table exists
+[INFO] Creating the `proj-ts`.`schemaversions` table
+[INFO] The `proj-ts`.`schemaversions` table has been created
+[INFO] MySql exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; MySql error code: ParseError; Number 1064; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 40
+[INFO] DB exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 126
+[ERROR] Upgrade failed due to an unexpected exception: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+Exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[ERROR] [11/04/2025 11:08:33] Migration failed: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>6arG48wptE8K/SSdJTrkKcwTuE25Hjx6AnSVhOntTu/aqSB/zNIUODcz1T' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Checking whether journal table exists
+[INFO] MySql exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; MySql error code: ParseError; Number 1064; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 40
+[INFO] DB exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+[ERROR] MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 126
+[ERROR] Upgrade failed due to an unexpected exception: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+Exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[ERROR] [11/04/2025 11:12:43] Migration failed: MySqlConnector.MySqlException (0x80004005): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<RSAKeyValue><Modulus>+pkW7lgeIvml8mL0ZOA0hr8bvb5ZQpHyfCUg+PoF1lsOKFGbYZMCodzpLF' at line 2
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
