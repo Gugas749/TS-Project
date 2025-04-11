@@ -11,6 +11,11 @@ using System.Data.OleDb;
 using Newtonsoft.Json;
 using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
+using DbUp;
+using DbUp.Engine.Output;
+using System.Reflection;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Server
 {
@@ -49,7 +54,8 @@ namespace Server
                 int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
 
                 if (bytesRead > 0)
-                {
+                {   
+
                     if (protocol.GetCmdType() == ProtocolSICmdType.DATA)
                     {
                         string receivedData = protocol.GetStringFromData();
@@ -121,27 +127,47 @@ namespace Server
             Conn.Close();
         }
 
-        static private void CreateUser(string userEmailCrypted, string password, string encryptKey)
+        static private void CreateUser(string userEmailCrypted, string inputedPassword, string encryptKey)
         {
-            OleDbConnection Conn = null;
-            connectToDB(ref Conn);
-            string sSQL = "INSERT INTO Clients (Email, Password, PublicKey) VALUES (?, ?, ?)";
-            OleDbCommand comand = new OleDbCommand(sSQL, Conn);
+            var logFilePath = "./Scripts/error-log.txt";
+            var upgradeLogger = new FileUpgradeLog(logFilePath);
 
-            comand.Parameters.AddWithValue("?", userEmailCrypted);
-            comand.Parameters.AddWithValue("?", password);
-            comand.Parameters.AddWithValue("?", encryptKey);
+            string executablePath = Assembly.GetEntryAssembly().Location;
+            string directory = Path.GetDirectoryName(executablePath);
+            string folderLoc = directory + @"\Scripts";
 
-            try
+            string connectionString = "Server=localhost;Database=proj-ts;Uid=root;Pwd=;";
+
+            var variables = new Dictionary<string, string>
             {
-                comand.ExecuteNonQuery();
+                { "email", userEmailCrypted },
+                { "password", inputedPassword },
+                { "publicKey", encryptKey }
+            };
+
+            var upgrader =
+                DeployChanges.To
+                    .MySqlDatabase(connectionString)
+                    .WithScriptsFromFileSystem(folderLoc, sqlFilePath => sqlFilePath.Contains("001-insert-user"))
+                    .WithVariables(variables)
+                    .LogTo(upgradeLogger)
+                    .Build();
+
+            var result = upgrader.PerformUpgrade();
+
+            if (!result.Successful)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error while creating user. Error Logged to Error-Log.txt");
+                upgradeLogger.LogError($"[{DateTime.Now}] Migration failed: {result.Error}");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("User created with success.");
+                Console.ResetColor();
             }
-            catch (OleDbException ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);  
-            }
-            Conn.Close();
         }
 
         static public void connectToDB(ref OleDbConnection Conn)

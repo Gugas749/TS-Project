@@ -1,0 +1,118 @@
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Journal table does not exist
+[ERROR] Upgrade failed due to an unexpected exception: System.IO.IOException: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+Exception: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+[ERROR] [11/04/2025 10:18:31] Migration failed: System.IO.IOException: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Journal table does not exist
+[ERROR] Upgrade failed due to an unexpected exception: System.IO.IOException: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+Exception: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+[ERROR] [11/04/2025 10:19:42] Migration failed: System.IO.IOException: O nome do diretório é inválido.
+
+   em System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   em System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   em System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   em System.IO.Directory.GetFiles(String path, String searchPattern, SearchOption searchOption)
+   em DbUp.ScriptProviders.FileSystemScriptProvider.GetScripts(IConnectionManager connectionManager) em /_/src/dbup-core/ScriptProviders/FileSystemScriptProvider.cs:line 63
+   em DbUp.Engine.UpgradeEngine.<GetDiscoveredScriptsAsEnumerable>b__12_0(IScriptProvider scriptProvider) em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 131
+   em System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   em System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   em System.Linq.OrderedEnumerable`1.<GetEnumerator>d__1.MoveNext()
+   em System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   em System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   em System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   em DbUp.Engine.UpgradeEngine.GetScriptsToExecuteInsideOperation() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 140
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 70
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Journal table does not exist
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Checking whether journal table exists
+[INFO] Creating the `proj-ts`.`schemaversions` table
+[INFO] The `proj-ts`.`schemaversions` table has been created
+[INFO] Upgrade successful
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
+[INFO] Beginning database upgrade
+[INFO] Checking whether journal table exists
+[INFO] Fetching list of already executed scripts.
+[INFO] No new scripts need to be executed - completing.
