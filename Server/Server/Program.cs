@@ -16,6 +16,8 @@ using DbUp.Engine.Output;
 using System.Reflection;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using DbUp.Helpers;
+using MySqlConnector;
 
 namespace Server
 {
@@ -88,43 +90,51 @@ namespace Server
                     }
                 }
             }
-        }
+        }   
 
         static private void CheckForUser(string userEmailCrypted, string password, string encryptKey)
         {
-            OleDbConnection Conn = null;
-            connectToDB(ref Conn);
-            string sSQL, idAux = "0";
-            bool hasAccount = false, passwordIsCorrect = false;
-            sSQL = "SELECT * FROM Clients";
-            OleDbCommand comand = new OleDbCommand(sSQL, Conn);
-            OleDbDataReader dataReader = comand.ExecuteReader();
+            var connectionString = "Server=localhost;Database=proj-ts;Uid=root;Pwd=;";
 
-            while (dataReader.Read())
+            string query = "SELECT * FROM users WHERE email = @userEmail";
+
+            using (var connection = new MySqlConnection(connectionString))
             {
-                if (userEmailCrypted.Equals(dataReader.GetData(1).ToString()))
+                connection.Open();
+
+                using (var cmd = new MySqlCommand(query, connection))
                 {
-                    hasAccount = true;
-                    if (password.Equals(dataReader.GetData(2).ToString()))
+                    cmd.Parameters.AddWithValue("@userEmail", userEmailCrypted);
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        passwordIsCorrect = true;
-                        idAux = dataReader.GetData(0).ToString();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string userID = reader["IDuser"].ToString();
+                                string passwordFromDb = reader["password"].ToString();
+
+                                Console.WriteLine("User has account.");
+                                if (passwordFromDb.Equals(password))
+                                {
+                                    Console.WriteLine($"User {userID} has been authenticated with success.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("User has inserted the wrong password.");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("No user found with that email.");
+                            Console.WriteLine("User dosent have a account.");
+                            CreateUser(userEmailCrypted, password, encryptKey);
+                        }
                     }
                 }
             }
-
-            if(hasAccount)
-            {
-                Console.WriteLine("User has account.");
-                if (passwordIsCorrect)
-                {
-                    Console.WriteLine($"User {idAux} has been authenticated with success.");
-                }
-            } else {
-                Console.WriteLine("User dosent have a account.");
-                CreateUser(userEmailCrypted, password, encryptKey);
-            }
-            Conn.Close();
         }
 
         static private void CreateUser(string userEmailCrypted, string inputedPassword, string encryptKey)
@@ -140,9 +150,9 @@ namespace Server
 
             var variables = new Dictionary<string, string>
             {
-                { "email", userEmailCrypted },
-                { "password", inputedPassword },
-                { "publicKey", encryptKey }
+                { "email", "'" + userEmailCrypted + "'" },
+                { "password", "'" + inputedPassword + "'" },
+                { "publicKey", "'" + encryptKey + "'" }
             };
 
             Console.WriteLine("" + userEmailCrypted + " - " + inputedPassword + " - " + encryptKey);
@@ -150,10 +160,11 @@ namespace Server
             var upgrader =
                 DeployChanges.To
                     .MySqlDatabase(connectionString)
-                    .WithScriptsFromFileSystem(folderLoc)
+                    .WithScriptsFromFileSystem(folderLoc, sqlFilePath => sqlFilePath.Contains("001-insert-user"))
                     .WithVariables(variables)
                     .LogToConsole()
                     .LogTo(upgradeLogger)
+                    .JournalTo(new NullJournal())
                     .Build();
 
             var result = upgrader.PerformUpgrade();

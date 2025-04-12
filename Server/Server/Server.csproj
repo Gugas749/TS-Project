@@ -90,6 +90,7 @@
     <Compile Include="CaesarCipher.cs" />
     <Compile Include="ClientInfo.cs" />
     <Compile Include="FileUpgradeLog .cs" />
+    <Compile Include="KeyManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

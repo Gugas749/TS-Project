@@ -34,11 +34,12 @@ namespace Cliente1
 
         private void butLoginAuth_Click(object sender, EventArgs e)
         {
+            string key = KeyManager.GetPublicKey();
             var dataToSend = new
             {
-                username = textBoxUsernameAuth.Text.ToString().Trim(),
-                password = textBoxPasswordAuth.Text.ToString().Trim(),
-                publicKey = KeyManager.GetPublicKey()
+                username = KeyManager.EncryptWithPublicKey(textBoxUsernameAuth.Text.ToString().Trim(), key),
+                password = KeyManager.EncryptWithPublicKey(textBoxPasswordAuth.Text.ToString().Trim(), key),
+                publicKey = key
             };
             string json = JsonConvert.SerializeObject(dataToSend);
 
