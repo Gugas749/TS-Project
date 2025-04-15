@@ -627,3 +627,189 @@ Exception: Unknown column 'admin' in 'field list'
 [INFO] Beginning database upgrade
 [INFO] Executing Database Server script '001-insert-user.sql'
 [INFO] Upgrade successful
+[INFO] Beginning database upgrade
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] MySql exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; MySql error code: BadFieldError; Number 1054; Message: Unknown column 'publicKey' in 'field list'
+[ERROR] MySqlConnector.MySqlException (0x80004005): Unknown column 'publicKey' in 'field list'
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 40
+[INFO] DB exception has occurred in script: '001-insert-user.sql'
+[ERROR] Script block number: 0; Message: Unknown column 'publicKey' in 'field list'
+[ERROR] MySqlConnector.MySqlException (0x80004005): Unknown column 'publicKey' in 'field list'
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 126
+[ERROR] Upgrade failed due to an unexpected exception: MySqlConnector.MySqlException (0x80004005): Unknown column 'publicKey' in 'field list'
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+Exception: Unknown column 'publicKey' in 'field list'
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[ERROR] [12/04/2025 18:09:17] Migration failed: MySqlConnector.MySqlException (0x80004005): Unknown column 'publicKey' in 'field list'
+   em MySqlConnector.Core.ServerSession.<ReceiveReplyAsync>d__107.MoveNext() em /_/src/MySqlConnector/Core/ServerSession.cs:line 876
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Threading.Tasks.ValueTask`1.get_Result()
+   em MySqlConnector.Core.ResultSet.<ReadResultSetHeaderAsync>d__2.MoveNext() em /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) em /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   em MySqlConnector.MySqlDataReader.<InitAsync>d__107.MoveNext() em /_/src/MySqlConnector/MySqlDataReader.cs:line 503
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   em MySqlConnector.Core.CommandExecutor.<ExecuteReaderAsync>d__0.MoveNext() em /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.<ExecuteNonQueryAsync>d__78.MoveNext() em /_/src/MySqlConnector/MySqlCommand.cs:line 309
+--- Fim do rastreio da pilha da localização anterior em que a excepção foi emitida ---
+   em System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   em System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   em MySqlConnector.MySqlCommand.ExecuteNonQuery() em /_/src/MySqlConnector/MySqlCommand.cs:line 108
+   em DbUp.Support.ScriptExecutor.ExecuteNonQuery(IDbCommand command) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 201
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_1.<Execute>b__2() em /_/src/dbup-core/Support/ScriptExecutor.cs:line 153
+   em DbUp.MySql.MySqlScriptExecutor.ExecuteCommandsWithinExceptionHandler(Int32 index, SqlScript script, Action executeCommand) em /_/src/dbup-mysql/MySqlScriptExecutor.cs:line 48
+   em DbUp.Support.ScriptExecutor.<>c__DisplayClass20_0.<Execute>b__0(Func`1 dbCommandFactory) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 151
+   em DbUp.Engine.Transactions.NoTransactionStrategy.Execute(Action`1 action) em /_/src/dbup-core/Engine/Transactions/NoTransactionStrategy.cs:line 15
+   em DbUp.Engine.Transactions.DatabaseConnectionManager.ExecuteCommandsWithManagedConnection(Action`1 action) em /_/src/dbup-core/Engine/Transactions/DatabaseConnectionManager.cs:line 131
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 177
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[INFO] Beginning database upgrade
+[ERROR] Upgrade failed due to an unexpected exception: System.InvalidOperationException: Variable publicKey has no value defined
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.<>c__DisplayClass3_0.<ReplaceVariables>b__1(String name) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 51
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReadCustomStatement() em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 100
+   em DbUp.Support.SqlParser.Parse() em /_/src/dbup-core/Support/SqlParser.cs:line 67
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReplaceVariables(IDictionary`2 variables) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 57
+   em DbUp.Engine.Preprocessors.VariableSubstitutionPreprocessor.Process(String contents) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionPreprocessor.cs:line 30
+   em DbUp.Support.ScriptExecutor.PreprocessScriptContents(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 103
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 117
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+Exception: Variable publicKey has no value defined
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.<>c__DisplayClass3_0.<ReplaceVariables>b__1(String name) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 51
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReadCustomStatement() em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 100
+   em DbUp.Support.SqlParser.Parse() em /_/src/dbup-core/Support/SqlParser.cs:line 67
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReplaceVariables(IDictionary`2 variables) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 57
+   em DbUp.Engine.Preprocessors.VariableSubstitutionPreprocessor.Process(String contents) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionPreprocessor.cs:line 30
+   em DbUp.Support.ScriptExecutor.PreprocessScriptContents(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 103
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 117
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[ERROR] [12/04/2025 18:09:59] Migration failed: System.InvalidOperationException: Variable publicKey has no value defined
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.<>c__DisplayClass3_0.<ReplaceVariables>b__1(String name) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 51
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReadCustomStatement() em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 100
+   em DbUp.Support.SqlParser.Parse() em /_/src/dbup-core/Support/SqlParser.cs:line 67
+   em DbUp.Engine.Preprocessors.VariableSubstitutionSqlParser.ReplaceVariables(IDictionary`2 variables) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionSqlParser.cs:line 57
+   em DbUp.Engine.Preprocessors.VariableSubstitutionPreprocessor.Process(String contents) em /_/src/dbup-core/Engine/Preprocessors/VariableSubstitutionPreprocessor.cs:line 30
+   em DbUp.Support.ScriptExecutor.PreprocessScriptContents(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 103
+   em DbUp.Support.ScriptExecutor.Execute(SqlScript script, IDictionary`2 variables) em /_/src/dbup-core/Support/ScriptExecutor.cs:line 117
+   em DbUp.Engine.UpgradeEngine.PerformUpgrade() em /_/src/dbup-core/Engine/UpgradeEngine.cs:line 84
+[INFO] Beginning database upgrade
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Upgrade successful

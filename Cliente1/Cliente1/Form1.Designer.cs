@@ -34,8 +34,11 @@
             this.textBoxPasswordAuth = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbConnToServerInfo = new System.Windows.Forms.Label();
+            this.lbServerResponse = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.listViewDirect = new System.Windows.Forms.ListView();
+            this.txtBoxMSGToSend = new System.Windows.Forms.TextBox();
+            this.butSendMSG = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,14 +98,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auth";
             // 
-            // lbConnToServerInfo
+            // lbServerResponse
             // 
-            this.lbConnToServerInfo.AutoSize = true;
-            this.lbConnToServerInfo.Location = new System.Drawing.Point(12, 9);
-            this.lbConnToServerInfo.Name = "lbConnToServerInfo";
-            this.lbConnToServerInfo.Size = new System.Drawing.Size(159, 16);
-            this.lbConnToServerInfo.TabIndex = 6;
-            this.lbConnToServerInfo.Text = "Conexão com o servidor: ";
+            this.lbServerResponse.AutoSize = true;
+            this.lbServerResponse.Location = new System.Drawing.Point(12, 9);
+            this.lbServerResponse.Name = "lbServerResponse";
+            this.lbServerResponse.Size = new System.Drawing.Size(142, 16);
+            this.lbServerResponse.TabIndex = 6;
+            this.lbServerResponse.Text = "Resposta do Servidor:";
             // 
             // label4
             // 
@@ -113,13 +116,42 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Conexão com o servidor: ";
             // 
+            // listViewDirect
+            // 
+            this.listViewDirect.HideSelection = false;
+            this.listViewDirect.Location = new System.Drawing.Point(322, 72);
+            this.listViewDirect.Name = "listViewDirect";
+            this.listViewDirect.Size = new System.Drawing.Size(314, 271);
+            this.listViewDirect.TabIndex = 9;
+            this.listViewDirect.UseCompatibleStateImageBehavior = false;
+            // 
+            // txtBoxMSGToSend
+            // 
+            this.txtBoxMSGToSend.Location = new System.Drawing.Point(322, 349);
+            this.txtBoxMSGToSend.Name = "txtBoxMSGToSend";
+            this.txtBoxMSGToSend.Size = new System.Drawing.Size(206, 22);
+            this.txtBoxMSGToSend.TabIndex = 5;
+            // 
+            // butSendMSG
+            // 
+            this.butSendMSG.Location = new System.Drawing.Point(534, 349);
+            this.butSendMSG.Name = "butSendMSG";
+            this.butSendMSG.Size = new System.Drawing.Size(102, 25);
+            this.butSendMSG.TabIndex = 5;
+            this.butSendMSG.Text = "Send";
+            this.butSendMSG.UseVisualStyleBackColor = true;
+            this.butSendMSG.Click += new System.EventHandler(this.butSendMSG_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.butSendMSG);
+            this.Controls.Add(this.txtBoxMSGToSend);
+            this.Controls.Add(this.listViewDirect);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lbConnToServerInfo);
+            this.Controls.Add(this.lbServerResponse);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -139,8 +171,11 @@
         private System.Windows.Forms.TextBox textBoxPasswordAuth;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lbConnToServerInfo;
+        private System.Windows.Forms.Label lbServerResponse;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView listViewDirect;
+        private System.Windows.Forms.TextBox txtBoxMSGToSend;
+        private System.Windows.Forms.Button butSendMSG;
     }
 }
 

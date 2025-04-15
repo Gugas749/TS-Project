@@ -18,6 +18,8 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using DbUp.Helpers;
 using MySqlConnector;
+using server1;
+using Cliente1;
 
 namespace Server
 {
@@ -51,6 +53,10 @@ namespace Server
             // Criação do objeto para guardar info do cliente
             ClientInfo clientInfo = new ClientInfo();
 
+            //Enviamos a public key do server para o client
+            byte[] ackPacket = protocol.Make(ProtocolSICmdType.DATA, KeyManager.GetPublicKey());
+            stream.Write(ackPacket, 0, ackPacket.Length);
+
             while (true)
             {
                 int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
@@ -67,35 +73,60 @@ namespace Server
                         if (clientInfo.PublicKeyXml == null)
                         {
                             clientInfo.PublicKeyXml = publicKeyXml;
-                            Console.WriteLine("Chave pública do cliente recebida:");
-                            Console.WriteLine(clientInfo.PublicKeyXml);
+                            Console.WriteLine("Chave pública do cliente recebida.");
                         }
 
                         if(hasLoggedIn)
                         {
-                            Console.WriteLine($"Mensagem recebida: {receivedData}");
+                            Console.WriteLine($"Mensagem recebida: {receivedObj["mensage"]}");
 
                             // Aqui podes futuramente validar assinatura, etc.
 
                             // Envia confirmação
-                            byte[] ackPacket = protocol.Make(ProtocolSICmdType.DATA, "Recebido");
+                            ackPacket = protocol.Make(ProtocolSICmdType.DATA, "Recebido");
                             stream.Write(ackPacket, 0, ackPacket.Length);
                         }
                         else
                         {
-                            string username = receivedObj["username"];
-                            string password = receivedObj["password"];
-                            CheckForUser(username, password, publicKeyXml);
+                            string username = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["username"]));
+                            string password = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["password"]));
+                            string responseText = "";
+                            int response = CheckForUser(username, password, publicKeyXml);
+                            switch (response)
+                            {
+                                case 0: // error
+                                    responseText = "An ERRROR occured during the authentication.";
+                                    break;
+                                case 1: // incorrect password
+                                    responseText = "The inserted password is incorrect.";
+                                    break;
+                                case 2: // authenticated
+                                    responseText = "User Authenticated with success.";
+                                    break;
+                                case 3: // user created
+                                    responseText = "User has been created with success.";
+                                    break;
+                            }
+
+                            var dataToSend = new
+                            {
+                                response = responseText
+                            };
+
+                            string json = JsonConvert.SerializeObject(dataToSend);
+
+                            ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                            stream.Write(ackPacket, 0, ackPacket.Length);
                         }
                     }
                 }
             }
         }   
 
-        static private void CheckForUser(string userEmailCrypted, string password, string encryptKey)
+        static private int CheckForUser(string userEmailCrypted, string password, string encryptKey)
         {
+            int response = 0;
             var connectionString = "Server=localhost;Database=proj-ts;Uid=root;Pwd=;";
-
             string query = "SELECT * FROM users WHERE email = @userEmail";
 
             using (var connection = new MySqlConnection(connectionString))
@@ -113,16 +144,18 @@ namespace Server
                             while (reader.Read())
                             {
                                 string userID = reader["IDuser"].ToString();
-                                string passwordFromDb = reader["password"].ToString();
+                                string passwordFromDb = reader["pass"].ToString();
 
                                 Console.WriteLine("User has account.");
-                                if (passwordFromDb.Equals(password))
+                                if (passwordFromDb.Equals(CaesarCipher.Encrypt(password, 10)))
                                 {
                                     Console.WriteLine($"User {userID} has been authenticated with success.");
+                                    response = 2;
                                 }
                                 else
                                 {
                                     Console.WriteLine("User has inserted the wrong password.");
+                                    response = 1;
                                 }
                             }
                         }
@@ -130,17 +163,20 @@ namespace Server
                         {
                             Console.WriteLine("No user found with that email.");
                             Console.WriteLine("User dosent have a account.");
-                            CreateUser(userEmailCrypted, password, encryptKey);
+                            response = CreateUser(userEmailCrypted, password, encryptKey);
                         }
                     }
                 }
             }
+
+            return response;
         }
 
-        static private void CreateUser(string userEmailCrypted, string inputedPassword, string encryptKey)
+        static private int CreateUser(string userEmailCrypted, string inputedPassword, string encryptKey)
         {
-            var logFilePath = "./Scripts/error-log.txt";
-            var upgradeLogger = new FileUpgradeLog(logFilePath);
+            int response = 0;
+            string logFilePath = "./Scripts/error-log.txt";
+            FileUpgradeLog upgradeLogger = new FileUpgradeLog(logFilePath);
 
             string executablePath = Assembly.GetEntryAssembly().Location;
             string directory = Path.GetDirectoryName(executablePath);
@@ -151,11 +187,8 @@ namespace Server
             var variables = new Dictionary<string, string>
             {
                 { "email", "'" + userEmailCrypted + "'" },
-                { "password", "'" + inputedPassword + "'" },
-                { "publicKey", "'" + encryptKey + "'" }
+                { "password", "'" + CaesarCipher.Encrypt(inputedPassword, 10) + "'" }
             };
-
-            Console.WriteLine("" + userEmailCrypted + " - " + inputedPassword + " - " + encryptKey);
 
             var upgrader =
                 DeployChanges.To
@@ -181,20 +214,10 @@ namespace Server
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("User created with success.");
                 Console.ResetColor();
+                response = 3;
             }
-        }
 
-        static public void connectToDB(ref OleDbConnection Conn)
-        {
-            try
-            {
-                Conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\ts-project.accdb");
-                Conn.Open();
-            }
-            catch
-            {
-                Console.WriteLine("DB Connection Fail");
-            }
+            return response;
         }
     }
 }
