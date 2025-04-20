@@ -11,11 +11,9 @@ namespace Cliente1
 {
     public class MessageListener
     {
-        ProtocolSI protocol = new ProtocolSI();
-        NetworkStream stream;
         private static bool _listening = false;
 
-        public static void Start()
+        public static void Start(NetworkStream stream, Form1 parent)
         {
             if (_listening) return;
             _listening = true;
@@ -27,13 +25,11 @@ namespace Cliente1
                     try
                     {
                         // Replace this with your message check logic
-                        string newMessage = await CheckForMessageFromServer();
+                        string newMessage = await CheckForMessageFromServer(stream);
 
                         if (!string.IsNullOrEmpty(newMessage))
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.WriteLine($"[New message from server]: {newMessage}");
-                            Console.ResetColor();
+                            parent.lbServerResponse.Text = $"Resposta do Servidor: {newMessage}";
                         }
                     }
                     catch (Exception ex)
@@ -41,7 +37,7 @@ namespace Cliente1
                         Console.WriteLine($"[Listener Error]: {ex.Message}");
                     }
 
-                    await Task.Delay(5000); // Wait 5 seconds before checking again
+                    await Task.Delay(1000); // Wait 1 seconds before checking again
                 }
             });
         }
@@ -51,15 +47,16 @@ namespace Cliente1
             _listening = false;
         }
 
-        private static async Task<string> CheckForMessageFromServer()
+        private static async Task<string> CheckForMessageFromServer(NetworkStream stream)
         {
+            ProtocolSI protocol = new ProtocolSI();
             int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
-
+            string text = "empty";
             if (bytesRead > 0)
             {
-                lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
+                text = protocol.GetStringFromData();
             }
-            return protocol.GetStringFromData();
+            return text;
         }
     }
 

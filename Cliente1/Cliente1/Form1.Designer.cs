@@ -39,6 +39,7 @@
             this.listViewDirect = new System.Windows.Forms.ListView();
             this.txtBoxMSGToSend = new System.Windows.Forms.TextBox();
             this.butSendMSG = new System.Windows.Forms.Button();
+            this.txtBoxDestination = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,11 +143,19 @@
             this.butSendMSG.UseVisualStyleBackColor = true;
             this.butSendMSG.Click += new System.EventHandler(this.butSendMSG_Click);
             // 
+            // txtBoxDestination
+            // 
+            this.txtBoxDestination.Location = new System.Drawing.Point(673, 72);
+            this.txtBoxDestination.Name = "txtBoxDestination";
+            this.txtBoxDestination.Size = new System.Drawing.Size(95, 22);
+            this.txtBoxDestination.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtBoxDestination);
             this.Controls.Add(this.butSendMSG);
             this.Controls.Add(this.txtBoxMSGToSend);
             this.Controls.Add(this.listViewDirect);
@@ -171,11 +180,12 @@
         private System.Windows.Forms.TextBox textBoxPasswordAuth;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lbServerResponse;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewDirect;
         private System.Windows.Forms.TextBox txtBoxMSGToSend;
         private System.Windows.Forms.Button butSendMSG;
+        private System.Windows.Forms.TextBox txtBoxDestination;
+        public System.Windows.Forms.Label lbServerResponse;
     }
 }
 

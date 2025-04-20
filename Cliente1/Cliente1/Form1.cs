@@ -35,6 +35,7 @@ namespace Cliente1
             int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
             serverPublicKey = protocol.GetStringFromData();
             lbServerResponse.Text = serverPublicKey;
+            MessageListener.Start(stream, this);
         }
 
         private void butLoginAuth_Click(object sender, EventArgs e)
@@ -51,19 +52,21 @@ namespace Cliente1
             byte[] dataPacket = protocol.Make(ProtocolSICmdType.DATA, json);
             stream.Write(dataPacket, 0, dataPacket.Length);
 
-            int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
+            // int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
 
-            if (bytesRead > 0)
-            {
-                lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
-            }
+            //if (bytesRead > 0)
+            //{
+              //  lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
+            //}
+
         }
 
         private void butSendMSG_Click(object sender, EventArgs e)
         {
             var dataToSend = new
             {
-                mensage = KeyManager.EncryptWithPublicKey(txtBoxMSGToSend.Text.ToString().Trim(), serverPublicKey)
+                mensage = KeyManager.EncryptWithPublicKey(txtBoxMSGToSend.Text.ToString().Trim(), serverPublicKey),
+                destination = txtBoxDestination.Text.Trim()
             };
 
             string json = JsonConvert.SerializeObject(dataToSend);
@@ -80,38 +83,10 @@ namespace Cliente1
         }
 
         //Background listenner
-        private bool _isListening = true;
-
-        private void StartListening(NetworkStream stream)
+        
+        public void MensageFromServer(string mensage)
         {
-            Task.Run(() =>
-            {
-                while (_isListening)
-                {
-                    try
-                    {
-                        byte[] buffer = new byte[1024];
-                        int bytesRead = stream.Read(buffer, 0, buffer.Length);
-
-                        if (bytesRead > 0)
-                        {
-                            string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                            var receivedObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
-
-                            // 👇 Invoke UI update on the main thread (important if you're in WinForms/WPF)
-                            this.Invoke(new Action(() =>
-                            {
-                                lbServerResponse.Text = $"Resposta do Servidor: {receivedObj["response"]}";
-                            }));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _isListening = false;
-                    }
-                }
-            });
+            lbServerResponse.Text = $"Resposta do Servidor: {mensage}";
         }
-
     }
 }

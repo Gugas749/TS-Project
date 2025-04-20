@@ -26,12 +26,13 @@ namespace Server
     internal class Program
     {
         static TcpListener server = new TcpListener(IPAddress.Any, 50001);
+        static List<ClientInfo> clients = new List<ClientInfo>();
 
         static void Main(string[] args)
         {
             server = new TcpListener(IPAddress.Any, 50001);
             server.Start();
-            Console.WriteLine("Server started. Waiting for client...");
+            Console.WriteLine("Server started. Waiting for clients...");
 
             while (true)
             {
@@ -73,14 +74,32 @@ namespace Server
                         if (clientInfo.PublicKeyXml == null)
                         {
                             clientInfo.PublicKeyXml = publicKeyXml;
+                            clientInfo.Stream = stream;
                             Console.WriteLine("Chave pública do cliente recebida.");
                         }
 
                         if(hasLoggedIn)
                         {
-                            Console.WriteLine($"Mensagem recebida: {receivedObj["mensage"]}");
+                            Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
+                            Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
 
-                            // Aqui podes futuramente validar assinatura, etc.
+                            foreach(ClientInfo userData in clients)
+                            {
+                                if(userData.UserID.Equals(receivedObj["destination"]))
+                                {
+                                    Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
+                                    string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
+                                    var dataToSend = new
+                                    {
+                                        mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
+                                    };
+
+                                    string json = JsonConvert.SerializeObject(dataToSend);
+
+                                    ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                    userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                }
+                            }
 
                             // Envia confirmação
                             ackPacket = protocol.Make(ProtocolSICmdType.DATA, "Recebido");
@@ -91,7 +110,7 @@ namespace Server
                             string username = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["username"]));
                             string password = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["password"]));
                             string responseText = "";
-                            int response = CheckForUser(username, password, publicKeyXml);
+                            int response = CheckForUser(username, password, publicKeyXml, ref clientInfo);
                             switch (response)
                             {
                                 case 0: // error
@@ -113,6 +132,8 @@ namespace Server
                                 response = responseText
                             };
 
+                            clients.Add(clientInfo);
+
                             string json = JsonConvert.SerializeObject(dataToSend);
 
                             ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
@@ -123,7 +144,7 @@ namespace Server
             }
         }   
 
-        static private int CheckForUser(string userEmailCrypted, string password, string encryptKey)
+        static private int CheckForUser(string userEmailCrypted, string password, string encryptKey, ref ClientInfo clientInfo)
         {
             int response = 0;
             var connectionString = "Server=localhost;Database=proj-ts;Uid=root;Pwd=;";
@@ -144,7 +165,11 @@ namespace Server
                             while (reader.Read())
                             {
                                 string userID = reader["IDuser"].ToString();
+                                string email = reader["email"].ToString();
                                 string passwordFromDb = reader["pass"].ToString();
+
+                                clientInfo.UserID = Convert.ToInt32(userID);
+                                clientInfo.Email = email;
 
                                 Console.WriteLine("User has account.");
                                 if (passwordFromDb.Equals(CaesarCipher.Encrypt(password, 10)))
