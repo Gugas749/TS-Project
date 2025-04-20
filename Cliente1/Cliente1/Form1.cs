@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EI.SI;
 using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Cliente1
@@ -20,6 +21,7 @@ namespace Cliente1
         ProtocolSI protocol = new ProtocolSI();
         NetworkStream stream;
         string serverPublicKey = "";
+        public static Form1 THIS;
 
         public Form1()
         {
@@ -35,7 +37,8 @@ namespace Cliente1
             int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
             serverPublicKey = protocol.GetStringFromData();
             lbServerResponse.Text = serverPublicKey;
-            MessageListener.Start(stream, this);
+            THIS = this;
+            MessageListener.Start(stream, THIS);
         }
 
         private void butLoginAuth_Click(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace Cliente1
             {
                 username = KeyManager.EncryptWithPublicKey(textBoxUsernameAuth.Text.ToString().Trim(), serverPublicKey),
                 password = KeyManager.EncryptWithPublicKey(textBoxPasswordAuth.Text.ToString().Trim(), serverPublicKey),
+                isLoggingIn = "YES",
                 publicKey = key
             };
             string json = JsonConvert.SerializeObject(dataToSend);
@@ -58,35 +62,54 @@ namespace Cliente1
             //{
               //  lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
             //}
-
         }
 
         private void butSendMSG_Click(object sender, EventArgs e)
         {
+            string key = KeyManager.GetPublicKey();
             var dataToSend = new
             {
                 mensage = KeyManager.EncryptWithPublicKey(txtBoxMSGToSend.Text.ToString().Trim(), serverPublicKey),
-                destination = txtBoxDestination.Text.Trim()
+                destination = txtBoxDestination.Text.Trim(),
+                isLoggingIn = "NO",
+                publicKey = key
             };
 
             string json = JsonConvert.SerializeObject(dataToSend);
 
             byte[] dataPacket = protocol.Make(ProtocolSICmdType.DATA, json);
             stream.Write(dataPacket, 0, dataPacket.Length);
-
-            int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
-
-            if (bytesRead > 0)
-            {
-                lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
-            }
         }
 
         //Background listenner
         
-        public void MensageFromServer(string mensage)
+        public void MensageFromServer(Dictionary<string, string> receivedObj)
         {
-            lbServerResponse.Text = $"Resposta do Servidor: {mensage}";
+            switch (receivedObj["type"])
+            {
+                case "server-response":
+                    if (label1.InvokeRequired)
+                    {
+                        lbServerResponse.Invoke(new Action(() => lbServerResponse.Text = $"Resposta do Servidor: {receivedObj["response"]}"));
+                    }
+                    else
+                    {
+                        lbServerResponse.Text = $"Resposta do Servidor: {receivedObj["response"]}";
+                    }
+                    break;
+                case "mensage":
+                    string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["From"]));
+                    string text = aux + ": " + KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
+                    if (listViewDirect.InvokeRequired)
+                    {
+                        listViewDirect.Invoke(new Action(() => listViewDirect.Items.Add(text)));
+                    }
+                    else
+                    {
+                        listViewDirect.Items.Add(text);
+                    }
+                    break;
+            }
         }
     }
 }

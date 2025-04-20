@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using EI.SI;
+using Newtonsoft.Json;
 
 namespace Cliente1
 {
@@ -22,22 +23,15 @@ namespace Cliente1
             {
                 while (_listening)
                 {
-                    try
-                    {
-                        // Replace this with your message check logic
-                        string newMessage = await CheckForMessageFromServer(stream);
+                    // Replace this with your message check logic
+                    var receivedObj = await CheckForMessageFromServer(stream);
 
-                        if (!string.IsNullOrEmpty(newMessage))
-                        {
-                            parent.lbServerResponse.Text = $"Resposta do Servidor: {newMessage}";
-                        }
-                    }
-                    catch (Exception ex)
+                    if (receivedObj != null)
                     {
-                        Console.WriteLine($"[Listener Error]: {ex.Message}");
+                        parent.MensageFromServer(receivedObj);
                     }
 
-                    await Task.Delay(1000); // Wait 1 seconds before checking again
+                    await Task.Delay(100); // Wait 0.1 seconds before checking again
                 }
             });
         }
@@ -47,16 +41,19 @@ namespace Cliente1
             _listening = false;
         }
 
-        private static async Task<string> CheckForMessageFromServer(NetworkStream stream)
+        private static async Task<Dictionary<string, string>> CheckForMessageFromServer(NetworkStream stream)
         {
             ProtocolSI protocol = new ProtocolSI();
             int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
-            string text = "empty";
             if (bytesRead > 0)
             {
-                text = protocol.GetStringFromData();
+                var receivedObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(protocol.GetStringFromData());
+                return receivedObj;
             }
-            return text;
+            else
+            {
+                return null;
+            }
         }
     }
 

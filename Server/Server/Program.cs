@@ -78,19 +78,21 @@ namespace Server
                             Console.WriteLine("Chave pública do cliente recebida.");
                         }
 
-                        if(hasLoggedIn)
+                        if(!receivedObj["isLoggingIn"].Equals("YES"))
                         {
                             Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
                             Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
 
                             foreach(ClientInfo userData in clients)
                             {
-                                if(userData.UserID.Equals(receivedObj["destination"]))
+                                if(userData.UserID == Convert.ToInt32(receivedObj["destination"]))
                                 {
                                     Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
                                     string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
                                     var dataToSend = new
                                     {
+                                        type = "mensage",
+                                        From = KeyManager.EncryptWithPublicKey(clientInfo.Email, userData.PublicKeyXml),
                                         mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
                                     };
 
@@ -100,10 +102,6 @@ namespace Server
                                     userData.Stream.Write(ackPacket, 0, ackPacket.Length);
                                 }
                             }
-
-                            // Envia confirmação
-                            ackPacket = protocol.Make(ProtocolSICmdType.DATA, "Recebido");
-                            stream.Write(ackPacket, 0, ackPacket.Length);
                         }
                         else
                         {
@@ -129,6 +127,7 @@ namespace Server
 
                             var dataToSend = new
                             {
+                                type = "server-response",
                                 response = responseText
                             };
 
