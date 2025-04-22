@@ -47,7 +47,7 @@ namespace Server
         {
             Console.WriteLine("Client Connectado");
 
-            bool hasLoggedIn = false;
+            bool connected = true;
             NetworkStream stream = client.GetStream();
             ProtocolSI protocol = new ProtocolSI();
 
@@ -58,87 +58,108 @@ namespace Server
             byte[] ackPacket = protocol.Make(ProtocolSICmdType.DATA, KeyManager.GetPublicKey());
             stream.Write(ackPacket, 0, ackPacket.Length);
 
-            while (true)
+            while (connected)
             {
-                int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
+                try
+                {
+                    int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
 
-                if (bytesRead > 0)
-                {   
-
-                    if (protocol.GetCmdType() == ProtocolSICmdType.DATA)
+                    if (bytesRead > 0)
                     {
-                        string receivedData = protocol.GetStringFromData();
-                        var receivedObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(receivedData);
-                        string publicKeyXml = receivedObj["publicKey"];
-
-                        if (clientInfo.PublicKeyXml == null)
+                        if (protocol.GetCmdType() == ProtocolSICmdType.DATA)
                         {
-                            clientInfo.PublicKeyXml = publicKeyXml;
-                            clientInfo.Stream = stream;
-                            Console.WriteLine("Chave pública do cliente recebida.");
-                        }
+                            string receivedData = protocol.GetStringFromData();
+                            var receivedObj = JsonConvert.DeserializeObject<Dictionary<string, string>>(receivedData);
+                            string publicKeyXml = receivedObj["publicKey"];
 
-                        if(!receivedObj["isLoggingIn"].Equals("YES"))
-                        {
-                            Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
-                            Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
-
-                            foreach(ClientInfo userData in clients)
+                            if (clientInfo.PublicKeyXml == null)
                             {
-                                if(userData.UserID == Convert.ToInt32(receivedObj["destination"]))
+                                clientInfo.PublicKeyXml = publicKeyXml;
+                                clientInfo.Stream = stream;
+                                Console.WriteLine("Chave pública do cliente recebida.");
+                            }
+
+                            if (!receivedObj["isLoggingIn"].Equals("YES"))
+                            {
+                                Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
+                                Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
+
+                                foreach (ClientInfo userData in clients)
                                 {
-                                    Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
-                                    string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
-                                    var dataToSend = new
+                                    if (userData.UserID == Convert.ToInt32(receivedObj["destination"]))
                                     {
-                                        type = "mensage",
-                                        From = KeyManager.EncryptWithPublicKey(clientInfo.Email, userData.PublicKeyXml),
-                                        mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
-                                    };
+                                        Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
+                                        string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
+                                        var dataToSend = new
+                                        {
+                                            type = "mensage",
+                                            From = KeyManager.EncryptWithPublicKey(clientInfo.Email, userData.PublicKeyXml),
+                                            mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
+                                        };
 
-                                    string json = JsonConvert.SerializeObject(dataToSend);
+                                        string json = JsonConvert.SerializeObject(dataToSend);
 
-                                    ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
-                                    userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                        ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                        userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                    }
+                                    else
+                                    {
+                                        var dataToSend = new
+                                        {
+                                            type = "server-response",
+                                            response = "The receiver Client is not logged in. (Offline)"
+                                        };
+
+                                        string json = JsonConvert.SerializeObject(dataToSend);
+
+                                        ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                        stream.Write(ackPacket, 0, ackPacket.Length);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            string username = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["username"]));
-                            string password = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["password"]));
-                            string responseText = "";
-                            int response = CheckForUser(username, password, publicKeyXml, ref clientInfo);
-                            switch (response)
+                            else
                             {
-                                case 0: // error
-                                    responseText = "An ERRROR occured during the authentication.";
-                                    break;
-                                case 1: // incorrect password
-                                    responseText = "The inserted password is incorrect.";
-                                    break;
-                                case 2: // authenticated
-                                    responseText = "User Authenticated with success.";
-                                    break;
-                                case 3: // user created
-                                    responseText = "User has been created with success.";
-                                    break;
+                                string username = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["username"]));
+                                string password = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["password"]));
+                                string responseText = "";
+                                int response = CheckForUser(username, password, publicKeyXml, ref clientInfo);
+                                switch (response)
+                                {
+                                    case 0: // error
+                                        responseText = "An ERRROR occured during the authentication.";
+                                        break;
+                                    case 1: // incorrect password
+                                        responseText = "The inserted password is incorrect.";
+                                        break;
+                                    case 2: // authenticated
+                                        responseText = "User Authenticated with success.";
+                                        break;
+                                    case 3: // user created
+                                        responseText = "User has been created with success.";
+                                        break;
+                                }
+
+                                var dataToSend = new
+                                {
+                                    type = "server-response",
+                                    response = responseText
+                                };
+
+                                clients.Add(clientInfo);
+
+                                string json = JsonConvert.SerializeObject(dataToSend);
+
+                                ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                stream.Write(ackPacket, 0, ackPacket.Length);
                             }
-
-                            var dataToSend = new
-                            {
-                                type = "server-response",
-                                response = responseText
-                            };
-
-                            clients.Add(clientInfo);
-
-                            string json = JsonConvert.SerializeObject(dataToSend);
-
-                            ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
-                            stream.Write(ackPacket, 0, ackPacket.Length);
                         }
                     }
+                }
+                catch (IOException ioEx)
+                {
+                    //Cliente fechou
+                    Console.WriteLine($"Client {clientInfo.UserID} connection closed.");
+                    connected = false;
                 }
             }
         }   

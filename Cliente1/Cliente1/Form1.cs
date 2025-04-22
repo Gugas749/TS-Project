@@ -36,9 +36,10 @@ namespace Cliente1
 
             int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
             serverPublicKey = protocol.GetStringFromData();
-            lbServerResponse.Text = serverPublicKey;
+            lbServerResponse.Text = "Resposta do Servidor: Server Public Key received.";
+
             THIS = this;
-            MessageListener.Start(stream, THIS);
+            MessageListener.Start(stream, this);
         }
 
         private void butLoginAuth_Click(object sender, EventArgs e)
@@ -109,6 +110,14 @@ namespace Cliente1
                         listViewDirect.Items.Add(text);
                     }
                     break;
+            }
+        }
+
+        private void txtBoxDestination_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

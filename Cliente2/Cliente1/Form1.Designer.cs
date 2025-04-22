@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbServerResponse = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.listViewDirect = new System.Windows.Forms.ListView();
             this.txtBoxMSGToSend = new System.Windows.Forms.TextBox();
             this.butSendMSG = new System.Windows.Forms.Button();
@@ -55,7 +54,7 @@
             this.butLoginAuth.Location = new System.Drawing.Point(32, 150);
             this.butLoginAuth.Name = "butLoginAuth";
             this.butLoginAuth.Size = new System.Drawing.Size(195, 25);
-            this.butLoginAuth.TabIndex = 1;
+            this.butLoginAuth.TabIndex = 2;
             this.butLoginAuth.Text = "Login";
             this.butLoginAuth.UseVisualStyleBackColor = true;
             this.butLoginAuth.Click += new System.EventHandler(this.butLoginAuth_Click);
@@ -73,8 +72,9 @@
             // 
             this.textBoxPasswordAuth.Location = new System.Drawing.Point(32, 122);
             this.textBoxPasswordAuth.Name = "textBoxPasswordAuth";
+            this.textBoxPasswordAuth.PasswordChar = '*';
             this.textBoxPasswordAuth.Size = new System.Drawing.Size(195, 22);
-            this.textBoxPasswordAuth.TabIndex = 3;
+            this.textBoxPasswordAuth.TabIndex = 1;
             // 
             // label2
             // 
@@ -108,15 +108,6 @@
             this.lbServerResponse.TabIndex = 6;
             this.lbServerResponse.Text = "Resposta do Servidor:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(588, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Conexão com o servidor: ";
-            // 
             // listViewDirect
             // 
             this.listViewDirect.HideSelection = false;
@@ -131,7 +122,7 @@
             this.txtBoxMSGToSend.Location = new System.Drawing.Point(322, 349);
             this.txtBoxMSGToSend.Name = "txtBoxMSGToSend";
             this.txtBoxMSGToSend.Size = new System.Drawing.Size(206, 22);
-            this.txtBoxMSGToSend.TabIndex = 5;
+            this.txtBoxMSGToSend.TabIndex = 4;
             // 
             // butSendMSG
             // 
@@ -148,7 +139,8 @@
             this.txtBoxDestination.Location = new System.Drawing.Point(673, 72);
             this.txtBoxDestination.Name = "txtBoxDestination";
             this.txtBoxDestination.Size = new System.Drawing.Size(95, 22);
-            this.txtBoxDestination.TabIndex = 10;
+            this.txtBoxDestination.TabIndex = 3;
+            this.txtBoxDestination.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDestination_KeyPress);
             // 
             // Form1
             // 
@@ -159,7 +151,6 @@
             this.Controls.Add(this.butSendMSG);
             this.Controls.Add(this.txtBoxMSGToSend);
             this.Controls.Add(this.listViewDirect);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbServerResponse);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -181,7 +172,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbServerResponse;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewDirect;
         private System.Windows.Forms.TextBox txtBoxMSGToSend;
         private System.Windows.Forms.Button butSendMSG;
