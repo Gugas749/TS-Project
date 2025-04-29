@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.butConnectToServer = new Guna.UI2.WinForms.Guna2Button();
             this.lbConnectionState = new System.Windows.Forms.Label();
+            this.listViewOnlineUsers = new System.Windows.Forms.ListView();
+            this.butRequestUserList = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // listViewDirect
@@ -70,7 +72,7 @@
             this.butLoginAuth.Location = new System.Drawing.Point(152, 376);
             this.butLoginAuth.Name = "butLoginAuth";
             this.butLoginAuth.Size = new System.Drawing.Size(180, 45);
-            this.butLoginAuth.TabIndex = 16;
+            this.butLoginAuth.TabIndex = 3;
             this.butLoginAuth.Text = "Entrar";
             this.butLoginAuth.Click += new System.EventHandler(this.butLoginAuth_Click);
             // 
@@ -102,7 +104,7 @@
             this.textBoxUsernameAuth.PlaceholderText = "Email";
             this.textBoxUsernameAuth.SelectedText = "";
             this.textBoxUsernameAuth.Size = new System.Drawing.Size(309, 48);
-            this.textBoxUsernameAuth.TabIndex = 18;
+            this.textBoxUsernameAuth.TabIndex = 1;
             // 
             // textBoxPasswordAuth
             // 
@@ -125,7 +127,7 @@
             this.textBoxPasswordAuth.PlaceholderText = "Password";
             this.textBoxPasswordAuth.SelectedText = "";
             this.textBoxPasswordAuth.Size = new System.Drawing.Size(309, 48);
-            this.textBoxPasswordAuth.TabIndex = 19;
+            this.textBoxPasswordAuth.TabIndex = 2;
             // 
             // lbServerResponse
             // 
@@ -177,7 +179,7 @@
             this.butSendMSG.Location = new System.Drawing.Point(889, 423);
             this.butSendMSG.Name = "butSendMSG";
             this.butSendMSG.Size = new System.Drawing.Size(134, 49);
-            this.butSendMSG.TabIndex = 22;
+            this.butSendMSG.TabIndex = 6;
             this.butSendMSG.Text = "Enviar";
             this.butSendMSG.Click += new System.EventHandler(this.butSendMSG_Click);
             // 
@@ -201,7 +203,7 @@
             this.txtBoxMSGToSend.PlaceholderText = "";
             this.txtBoxMSGToSend.SelectedText = "";
             this.txtBoxMSGToSend.Size = new System.Drawing.Size(335, 48);
-            this.txtBoxMSGToSend.TabIndex = 23;
+            this.txtBoxMSGToSend.TabIndex = 5;
             // 
             // txtBoxDestination
             // 
@@ -223,7 +225,7 @@
             this.txtBoxDestination.PlaceholderText = "";
             this.txtBoxDestination.SelectedText = "";
             this.txtBoxDestination.Size = new System.Drawing.Size(116, 48);
-            this.txtBoxDestination.TabIndex = 24;
+            this.txtBoxDestination.TabIndex = 4;
             this.txtBoxDestination.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDestination_KeyPress);
             // 
             // label1
@@ -251,7 +253,7 @@
             this.butConnectToServer.Location = new System.Drawing.Point(337, 71);
             this.butConnectToServer.Name = "butConnectToServer";
             this.butConnectToServer.Size = new System.Drawing.Size(180, 45);
-            this.butConnectToServer.TabIndex = 26;
+            this.butConnectToServer.TabIndex = 0;
             this.butConnectToServer.Text = "Connectar ao Servidor";
             this.butConnectToServer.Click += new System.EventHandler(this.butConnectToServer_Click);
             // 
@@ -266,11 +268,43 @@
             this.lbConnectionState.TabIndex = 27;
             this.lbConnectionState.Text = "Estado da Conexão: Offline";
             // 
+            // listViewOnlineUsers
+            // 
+            this.listViewOnlineUsers.FullRowSelect = true;
+            this.listViewOnlineUsers.HideSelection = false;
+            this.listViewOnlineUsers.Location = new System.Drawing.Point(1029, 7);
+            this.listViewOnlineUsers.Name = "listViewOnlineUsers";
+            this.listViewOnlineUsers.Size = new System.Drawing.Size(242, 410);
+            this.listViewOnlineUsers.TabIndex = 28;
+            this.listViewOnlineUsers.UseCompatibleStateImageBehavior = false;
+            this.listViewOnlineUsers.View = System.Windows.Forms.View.Details;
+            this.listViewOnlineUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewOnlineUsers_MouseDoubleClick);
+            // 
+            // butRequestUserList
+            // 
+            this.butRequestUserList.BorderRadius = 7;
+            this.butRequestUserList.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.butRequestUserList.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.butRequestUserList.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.butRequestUserList.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.butRequestUserList.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(94)))), ((int)(((byte)(112)))));
+            this.butRequestUserList.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.butRequestUserList.ForeColor = System.Drawing.Color.White;
+            this.butRequestUserList.IndicateFocus = true;
+            this.butRequestUserList.Location = new System.Drawing.Point(1029, 423);
+            this.butRequestUserList.Name = "butRequestUserList";
+            this.butRequestUserList.Size = new System.Drawing.Size(242, 49);
+            this.butRequestUserList.TabIndex = 29;
+            this.butRequestUserList.Text = "Pedir Clientes Online";
+            this.butRequestUserList.Click += new System.EventHandler(this.butRequestUserList_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 484);
+            this.ClientSize = new System.Drawing.Size(1282, 484);
+            this.Controls.Add(this.butRequestUserList);
+            this.Controls.Add(this.listViewOnlineUsers);
             this.Controls.Add(this.lbConnectionState);
             this.Controls.Add(this.butConnectToServer);
             this.Controls.Add(this.label1);
@@ -308,6 +342,8 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button butConnectToServer;
         private System.Windows.Forms.Label lbConnectionState;
+        private System.Windows.Forms.ListView listViewOnlineUsers;
+        private Guna.UI2.WinForms.Guna2Button butRequestUserList;
     }
 }
 

@@ -79,7 +79,7 @@ namespace Server
                                 Console.WriteLine("Chave pública do cliente recebida.");
                             }
 
-                            if (!receivedObj["isLoggingIn"].Equals("YES"))
+                            if (receivedObj["request"].Equals("sendMSG"))
                             {
                                 Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
                                 Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
@@ -122,7 +122,7 @@ namespace Server
                                     }
                                 }
                             }
-                            else
+                            else if(receivedObj["request"].Equals("logIn"))
                             {
                                 string username = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["username"]));
                                 string password = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["password"]));
@@ -165,30 +165,30 @@ namespace Server
                                         }
                                     }
                                     clients.Add(clientInfo);
-
-                                    foreach (ClientInfo userData in clients)
-                                    {
-                                        Console.WriteLine($"Sending updated online users list to user {userData.UserID}");
-
-                                        List<string> auxList = new List<string>();
-
-                                        foreach (ClientInfo userData2 in clients)
-                                        {
-                                            auxList.Add(userData2.UserID + "/" + userData2.Email);
-                                        }
-
-                                        var dataToSend2 = new
-                                        {
-                                            type = "updateOnUserList",
-                                            userList = auxList
-                                        };
-
-                                        string json2 = JsonConvert.SerializeObject(dataToSend2);
-
-                                        ackPacket = protocol.Make(ProtocolSICmdType.DATA, json2);
-                                        userData.Stream.Write(ackPacket, 0, ackPacket.Length);
-                                    }
                                 }
+
+                                string json = JsonConvert.SerializeObject(dataToSend);
+
+                                ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                stream.Write(ackPacket, 0, ackPacket.Length);
+                            }
+                            else if(receivedObj["request"].Equals("userList"))
+                            {
+                                Console.WriteLine($"Sending updated online users list to user {clientInfo.UserID}");
+
+                                string toSendList = "";
+
+                                foreach (ClientInfo userData in clients)
+                                {
+                                    if(userData.UserID != clientInfo.UserID)
+                                        toSendList = userData.UserID + "-" + userData.Email + "-";
+                                }
+
+                                var dataToSend = new
+                                {
+                                    type = "updateOnUserList",
+                                    userList= toSendList
+                                };
 
                                 string json = JsonConvert.SerializeObject(dataToSend);
 

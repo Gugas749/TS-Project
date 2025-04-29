@@ -34,9 +34,15 @@ namespace Cliente1
             enabelDisableFunc(0);
             listViewDirect.View = View.Details;
             listViewDirect.Columns.Clear();
-            listViewDirect.Columns.Add("Mensagens");
+            listViewDirect.Columns.Add("Mensagens", -2);
             listViewDirect.FullRowSelect = true;
             listViewDirect.HeaderStyle = ColumnHeaderStyle.None;
+
+            listViewOnlineUsers.View = View.Details;
+            listViewOnlineUsers.Columns.Clear();
+            listViewOnlineUsers.Columns.Add("Users", -2);
+            listViewOnlineUsers.FullRowSelect = true;
+            listViewOnlineUsers.HeaderStyle = ColumnHeaderStyle.None;
         }
 
         private void butLoginAuth_Click(object sender, EventArgs e)
@@ -46,7 +52,7 @@ namespace Cliente1
             {
                 username = KeyManager.EncryptWithPublicKey(textBoxUsernameAuth.Text.ToString().Trim(), serverPublicKey),
                 password = KeyManager.EncryptWithPublicKey(textBoxPasswordAuth.Text.ToString().Trim(), serverPublicKey),
-                isLoggingIn = "YES",
+                request = "logIn",
                 publicKey = key
             };
             string json = JsonConvert.SerializeObject(dataToSend);
@@ -71,7 +77,7 @@ namespace Cliente1
             {
                 mensage = KeyManager.EncryptWithPublicKey(txtBoxMSGToSend.Text.ToString().Trim(), serverPublicKey),
                 destination = txtBoxDestination.Text.Trim(),
-                isLoggingIn = "NO",
+                request = "sendMSG",
                 publicKey = key
             };
 
@@ -101,6 +107,7 @@ namespace Cliente1
                                     textBoxPasswordAuth.Enabled = true;
                                     butLoginAuth.Enabled = true;
 
+                                    butRequestUserList.Enabled = false;
                                     butSendMSG.Enabled = false;
                                     txtBoxDestination.Enabled = false;
                                     txtBoxMSGToSend.Enabled = false;
@@ -120,6 +127,7 @@ namespace Cliente1
                                 textBoxPasswordAuth.Enabled = true;
                                 butLoginAuth.Enabled = true;
 
+                                butRequestUserList.Enabled = false;
                                 butSendMSG.Enabled = false;
                                 txtBoxDestination.Enabled = false;
                                 txtBoxMSGToSend.Enabled = false;
@@ -137,6 +145,27 @@ namespace Cliente1
                     else
                     {
                         listViewDirect.Items.Add(text);
+                    }
+                    break;
+                case "updateOnUserList":
+                    List<string> userList = getList(receivedObj["userList"]);
+
+                    if (listViewOnlineUsers.InvokeRequired)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            foreach (string user in userList)
+                            {   
+                                listViewOnlineUsers.Items.Add(user);
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        foreach (string user in userList)
+                        {
+                            listViewOnlineUsers.Items.Add(user);
+                        }
                     }
                     break;
             }
@@ -172,10 +201,25 @@ namespace Cliente1
             }
         }
 
+        private void butRequestUserList_Click(object sender, EventArgs e)
+        {
+            string key = KeyManager.GetPublicKey();
+            var dataToSend = new
+            {
+                request = "userList",
+                publicKey = key
+            };
+            string json = JsonConvert.SerializeObject(dataToSend);
+
+            byte[] dataPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+            stream.Write(dataPacket, 0, dataPacket.Length);
+        }
+
         private void enabelDisableFunc(int selection)
         {
             butLoginAuth.Enabled = false;
             butSendMSG.Enabled = false;
+            butRequestUserList.Enabled = false;
 
             txtBoxDestination.Enabled = false;
             txtBoxMSGToSend.Enabled = false;
@@ -195,8 +239,33 @@ namespace Cliente1
                     txtBoxDestination.Enabled = true;
                     txtBoxMSGToSend.Enabled = true;
                     butSendMSG.Enabled = true;
+                    butRequestUserList.Enabled = true;
                     break;
             }
+        }
+
+        private void listViewOnlineUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewOnlineUsers.SelectedItems.Count > 0)
+            {
+                string input = listViewOnlineUsers.SelectedItems[0].Text;
+                string idPart = input.Split('-')[0];
+                txtBoxDestination.Text = idPart;
+            }
+        }
+
+        private List<string> getList(string input)
+        {
+            List<string> result = new List<string>();
+
+            string[] parts = input.Split('-', (char)StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < parts.Length - 1; i += 2)
+            {
+                result.Add($"{parts[i]}-{parts[i + 1]}");
+            }
+
+            return result;
         }
     }
 }
