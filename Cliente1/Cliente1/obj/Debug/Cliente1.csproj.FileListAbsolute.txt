@@ -12,3 +12,4 @@ C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Cliente1\Cliente1\o
 C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Cliente1\Cliente1\obj\Debug\Cliente1.csproj.Up2Date
 C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Cliente1\Cliente1\obj\Debug\Cliente1.exe
 C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Cliente1\Cliente1\obj\Debug\Cliente1.pdb
+C:\Users\conra\Desktop\IPL\1-ano\2-Semestre\security\Projeto\Cliente1\Cliente1\bin\Debug\Guna.UI2.dll

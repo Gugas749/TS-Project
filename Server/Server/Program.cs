@@ -83,31 +83,36 @@ namespace Server
                             {
                                 Console.WriteLine($"Mensagem recebida do User {clientInfo.UserID}.");
                                 Console.WriteLine($"Mensagem para ser enviada para o User {receivedObj["destination"]}.");
-
-                                foreach (ClientInfo userData in clients)
+                                bool clientOff = true;
+                                if (clientInfo.UserID != Convert.ToInt32(receivedObj["destination"]))
                                 {
-                                    if (userData.UserID == Convert.ToInt32(receivedObj["destination"]))
+                                    foreach (ClientInfo userData in clients)
                                     {
-                                        Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
-                                        string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
-                                        var dataToSend = new
+                                        if (userData.UserID == Convert.ToInt32(receivedObj["destination"]))
                                         {
-                                            type = "mensage",
-                                            From = KeyManager.EncryptWithPublicKey(clientInfo.Email, userData.PublicKeyXml),
-                                            mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
-                                        };
+                                            clientOff = false;
+                                            Console.WriteLine($"User {receivedObj["destination"]} connectado.\nEnviando mensagem.");
+                                            string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
+                                            var dataToSend = new
+                                            {
+                                                type = "mensage",
+                                                From = KeyManager.EncryptWithPublicKey(clientInfo.Email, userData.PublicKeyXml),
+                                                mensage = KeyManager.EncryptWithPublicKey(aux, userData.PublicKeyXml)
+                                            };
 
-                                        string json = JsonConvert.SerializeObject(dataToSend);
+                                            string json = JsonConvert.SerializeObject(dataToSend);
 
-                                        ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
-                                        userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                            ackPacket = protocol.Make(ProtocolSICmdType.DATA, json);
+                                            userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                        }
                                     }
-                                    else
+                                    if (clientOff)
                                     {
                                         var dataToSend = new
                                         {
                                             type = "server-response",
-                                            response = "The receiver Client is not logged in. (Offline)"
+                                            response = 10,
+                                            responseText = "The receiver Client is not logged in. (Offline)"
                                         };
 
                                         string json = JsonConvert.SerializeObject(dataToSend);
@@ -137,15 +142,53 @@ namespace Server
                                     case 3: // user created
                                         responseText = "User has been created with success.";
                                         break;
+                                    case 4: // user already logged in from another device
+                                        responseText = "User is already logged in from another device.";
+                                        break;
                                 }
 
                                 var dataToSend = new
                                 {
                                     type = "server-response",
-                                    response = responseText
+                                    response = response,
+                                    responseText = responseText
                                 };
 
-                                clients.Add(clientInfo);
+                                if(response == 2 || response == 3)
+                                {
+                                    foreach (ClientInfo selectedClient in clients)
+                                    {
+                                        if (selectedClient.UserID == clientInfo.UserID)
+                                        {
+                                            clients.Remove(selectedClient);
+                                            break;
+                                        }
+                                    }
+                                    clients.Add(clientInfo);
+
+                                    foreach (ClientInfo userData in clients)
+                                    {
+                                        Console.WriteLine($"Sending updated online users list to user {userData.UserID}");
+
+                                        List<string> auxList = new List<string>();
+
+                                        foreach (ClientInfo userData2 in clients)
+                                        {
+                                            auxList.Add(userData2.UserID + "/" + userData2.Email);
+                                        }
+
+                                        var dataToSend2 = new
+                                        {
+                                            type = "updateOnUserList",
+                                            userList = auxList
+                                        };
+
+                                        string json2 = JsonConvert.SerializeObject(dataToSend2);
+
+                                        ackPacket = protocol.Make(ProtocolSICmdType.DATA, json2);
+                                        userData.Stream.Write(ackPacket, 0, ackPacket.Length);
+                                    }
+                                }
 
                                 string json = JsonConvert.SerializeObject(dataToSend);
 
@@ -159,6 +202,7 @@ namespace Server
                 {
                     //Cliente fechou
                     Console.WriteLine($"Client {clientInfo.UserID} connection closed.");
+                    clients.Remove(clientInfo);
                     connected = false;
                 }
             }
@@ -192,12 +236,22 @@ namespace Server
                                 clientInfo.Email = email;
 
                                 Console.WriteLine("User has account.");
-                                if (passwordFromDb.Equals(CaesarCipher.Encrypt(password, 10)))
+                                bool userAlreadyLoggedIn = false;
+                                foreach(ClientInfo selectedClient in clients)
+                                {
+                                    if(selectedClient.UserID == clientInfo.UserID)
+                                    {
+                                        userAlreadyLoggedIn = true;
+                                        Console.WriteLine("User is already logged in from another device.");
+                                        response = 4;                                    
+                                    }
+                                }
+                                if (passwordFromDb.Equals(CaesarCipher.Encrypt(password, 10)) && !userAlreadyLoggedIn)
                                 {
                                     Console.WriteLine($"User {userID} has been authenticated with success.");
                                     response = 2;
                                 }
-                                else
+                                else if(!userAlreadyLoggedIn)
                                 {
                                     Console.WriteLine("User has inserted the wrong password.");
                                     response = 1;
@@ -264,5 +318,6 @@ namespace Server
 
             return response;
         }
+   
     }
 }
