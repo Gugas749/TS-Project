@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Cliente2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Cliente2\\cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\cliente2\\cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|solutionrelative:cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\cliente2\\cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Cliente2\\cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{17BD10CA-4194-46CC-A3CF-1B060F8C779E}|Cliente1\\Cliente1.csproj|solutionrelative:cliente1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Cliente1\\MessageListener.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Cliente2\\Cliente1\\MessageListener.cs",
               "RelativeToolTip": "Cliente1\\MessageListener.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAADEAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAADEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T21:41:58.921Z"
             },
@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Cliente1\\Form1.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Cliente2\\Cliente1\\Form1.cs",
               "RelativeToolTip": "Cliente1\\Form1.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAmwCoAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAgwAUBAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T09:20:56.39Z",
               "EditorCaption": ""

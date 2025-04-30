@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\server\\clientinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\clientinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\server\\server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ClientInfo.cs",
-              "DocumentMoniker": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\ClientInfo.cs",
-              "RelativeDocumentMoniker": "Server\\ClientInfo.cs",
-              "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\ClientInfo.cs",
-              "RelativeToolTip": "Server\\ClientInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
+              "Title": "KeyManager.cs",
+              "DocumentMoniker": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\KeyManager.cs",
+              "RelativeDocumentMoniker": "Server\\KeyManager.cs",
+              "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\KeyManager.cs",
+              "RelativeToolTip": "Server\\KeyManager.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwCcAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T17:43:29.125Z"
+              "WhenOpened": "2025-04-30T10:05:37.789Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,7 +45,7 @@
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAHwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAJUBAAAAAAAAAAAgwI4AAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T09:05:50.211Z",
               "EditorCaption": ""

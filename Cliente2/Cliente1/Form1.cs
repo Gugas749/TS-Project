@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EI.SI;
 using Newtonsoft.Json;
+using server1;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -20,8 +21,9 @@ namespace Cliente1
         TcpClient client = new TcpClient();
         ProtocolSI protocol = new ProtocolSI();
         NetworkStream stream;
-        string serverPublicKey = "", userEmail = "";
+        string serverPublicKey = "", userEmail = "", userId ="";
         public static Form1 THIS;
+        List<Mensage> msgList = new List<Mensage>();
 
         public Form1()
         {
@@ -31,7 +33,7 @@ namespace Cliente1
         private void Form1_Load(object sender, EventArgs e)
         {
             THIS = this;
-            enabelDisableFunc(0);
+            enabelDisableFunc(1);
             listViewDirect.View = View.Details;
             listViewDirect.Columns.Clear();
             listViewDirect.Columns.Add("Mensagens", -2);
@@ -47,6 +49,8 @@ namespace Cliente1
 
         private void butLoginAuth_Click(object sender, EventArgs e)
         {
+            connectToServer();
+
             string key = KeyManager.GetPublicKey();
             var dataToSend = new
             {
@@ -61,23 +65,18 @@ namespace Cliente1
             stream.Write(dataPacket, 0, dataPacket.Length);
             userEmail = textBoxUsernameAuth.Text.ToString().Trim();
             enabelDisableFunc(2);
-
-            // int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
-
-            //if (bytesRead > 0)
-            //{
-            //  lbServerResponse.Text = $"Resposta do Servidor: {protocol.GetStringFromData()}";
-            //}
         }
 
         private void butSendMSG_Click(object sender, EventArgs e)
         {
             string key = KeyManager.GetPublicKey();
+            byte[] dataBytes = Encoding.UTF8.GetBytes(txtBoxMSGToSend.Text.ToString().Trim());
             var dataToSend = new
             {
                 mensage = KeyManager.EncryptWithPublicKey(txtBoxMSGToSend.Text.ToString().Trim(), serverPublicKey),
                 destination = txtBoxDestination.Text.Trim(),
                 request = "sendMSG",
+                signature = KeyManager.SignData(dataBytes),
                 publicKey = key
             };
 
@@ -86,6 +85,15 @@ namespace Cliente1
             byte[] dataPacket = protocol.Make(ProtocolSICmdType.DATA, json);
             stream.Write(dataPacket, 0, dataPacket.Length);
             listViewDirect.Items.Add(userEmail +": "+ txtBoxMSGToSend.Text.ToString().Trim());
+
+            Mensage msg = new Mensage();
+            msg.ReceiverID = txtBoxDestination.Text.Trim();
+            msg.SenderID = userId;
+            msg.SenderEmail = userEmail;
+            msg.MSG = txtBoxMSGToSend.Text.ToString().Trim();
+            msgList.Add(msg);
+
+            txtBoxMSGToSend.Text = "";
         }
 
         public void MensageFromServer(Dictionary<string, string> receivedObj)
@@ -113,6 +121,14 @@ namespace Cliente1
                                     txtBoxMSGToSend.Enabled = false;
                                 }));
                                 break;
+                            case 2:
+                            case 3:
+                                this.Invoke(new Action(() =>
+                                {
+                                    msgList = getListMSG(receivedObj["msgs"]);
+                                    userId = receivedObj["userID"];
+                                }));
+                                break;
                         }
                     }
                     else
@@ -132,19 +148,41 @@ namespace Cliente1
                                 txtBoxDestination.Enabled = false;
                                 txtBoxMSGToSend.Enabled = false;
                                 break;
+                            case 2:
+                            case 3:
+                                msgList = getListMSG(receivedObj["msgs"]);
+                                userId = receivedObj["userID"];
+                                break;
                         }
                     }
                     break;
                 case "mensage":
                     string aux = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["From"]));
-                    string text = aux + ": " + KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
+                    string text = KeyManager.DecryptWithPrivateKey(Convert.FromBase64String(receivedObj["mensage"]));
                     if (listViewDirect.InvokeRequired)
                     {
-                        listViewDirect.Invoke(new Action(() => listViewDirect.Items.Add(text)));
+                        this.Invoke(new Action(() =>
+                        {
+                            listViewDirect.Items.Add(aux + ": " + text);
+
+                            Mensage msg = new Mensage();
+                            msg.ReceiverID = userId;
+                            msg.SenderID = receivedObj["FromID"];
+                            msg.SenderEmail = aux;
+                            msg.MSG = text;
+                            msgList.Add(msg);
+                        }));
                     }
                     else
                     {
-                        listViewDirect.Items.Add(text);
+                        listViewDirect.Items.Add(aux + ": " + text);
+
+                        Mensage msg = new Mensage();
+                        msg.ReceiverID = userId;
+                        msg.SenderID = receivedObj["FromID"];
+                        msg.SenderEmail = aux;
+                        msg.MSG = text;
+                        msgList.Add(msg);
                     }
                     break;
                 case "updateOnUserList":
@@ -173,32 +211,16 @@ namespace Cliente1
 
         private void txtBoxDestination_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
         }
 
-        private void butConnectToServer_Click(object sender, EventArgs e)
+        private void butLogout_Click(object sender, EventArgs e)
         {
-            try
-            {
-                client = new TcpClient();
-                client.Connect("127.0.0.1", 50001);
-                stream = client.GetStream();
-
-                int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
-                serverPublicKey = protocol.GetStringFromData();
-                lbServerResponse.Text = "Resposta do Servidor: Server Public Key received.";
-                MessageListener.Start(stream, this);
-
-                lbConnectionState.Text = "Estado da Conexão: Online";
-                enabelDisableFunc(1);
-            }
-            catch
-            {
-                MessageBox.Show("Impossivel Connectar", "Não foi possivel estabelecer conexão ao servidor.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            connectToServer();
         }
 
         private void butRequestUserList_Click(object sender, EventArgs e)
@@ -220,6 +242,7 @@ namespace Cliente1
             butLoginAuth.Enabled = false;
             butSendMSG.Enabled = false;
             butRequestUserList.Enabled = false;
+            butLogout.Enabled = false;
 
             txtBoxDestination.Enabled = false;
             txtBoxMSGToSend.Enabled = false;
@@ -228,14 +251,15 @@ namespace Cliente1
             switch (selection)
             {
                 case 0:
-                    butConnectToServer.Enabled = true;
                     break;
                 case 1:
                     textBoxUsernameAuth.Enabled = true;
                     textBoxPasswordAuth.Enabled = true;
                     butLoginAuth.Enabled = true;
+                    butLogout.Enabled = true;
                     break;
                 case 2:
+                    butLogout.Enabled = true;
                     txtBoxDestination.Enabled = true;
                     txtBoxMSGToSend.Enabled = true;
                     butSendMSG.Enabled = true;
@@ -266,6 +290,74 @@ namespace Cliente1
             }
 
             return result;
+        }
+
+        private void txtBoxMSGToSend_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                butSendMSG.PerformClick();
+            }
+        }
+
+        private void txtBoxDestination_TextChanged(object sender, EventArgs e)
+        {
+            listViewDirect.Items.Clear();
+
+            if(txtBoxDestination.Text.Trim().Length > 0)
+            {
+                foreach(Mensage mensage in msgList)
+                {
+                    if (txtBoxDestination.Text.Trim().Equals(mensage.SenderID) || txtBoxDestination.Text.Trim().Equals(mensage.ReceiverID))
+                    {
+                        listViewDirect.Items.Add(mensage.SenderEmail + ": " + mensage.MSG);
+                    }
+                }
+            }
+        }
+
+        private List<Mensage> getListMSG(string input)
+        {
+            List<Mensage> result = new List<Mensage>();
+
+            string[] parts = input.Split('-', (char)StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < parts.Length - 1; i += 2)
+            {
+                Mensage mensage = new Mensage();
+                mensage.SenderID = parts[i];
+                mensage.ReceiverID = parts[i + 1];
+                mensage.SenderEmail = parts[i + 2];
+                string aux = parts[i + 3];
+                mensage.MSG = CaesarCipher.Decrypt(aux, 10);
+                result.Add(mensage);
+                i += 2;
+            }
+
+            return result;
+        }
+
+        private void connectToServer()
+        {
+            try
+            {
+                client = new TcpClient();
+                client.Connect("127.0.0.1", 50001);
+                stream = client.GetStream();
+
+                int bytesRead = stream.Read(protocol.Buffer, 0, protocol.Buffer.Length);
+                serverPublicKey = protocol.GetStringFromData();
+                lbServerResponse.Text = "Resposta do Servidor: Server Public Key received.";
+                MessageListener.Start(stream, this);
+
+                lbConnectionState.Text = "Estado da Conexão: Online";
+                enabelDisableFunc(1);
+            }
+            catch
+            {
+                MessageBox.Show("Impossivel Connectar", "Não foi possivel estabelecer conexão ao servidor.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbConnectionState.Text = "Estado da Conexão: Offline";
+            }
         }
     }
 }

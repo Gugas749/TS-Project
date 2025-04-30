@@ -41,7 +41,7 @@
             this.txtBoxMSGToSend = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtBoxDestination = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.butConnectToServer = new Guna.UI2.WinForms.Guna2Button();
+            this.butLogout = new Guna.UI2.WinForms.Guna2Button();
             this.lbConnectionState = new System.Windows.Forms.Label();
             this.listViewOnlineUsers = new System.Windows.Forms.ListView();
             this.butRequestUserList = new Guna.UI2.WinForms.Guna2Button();
@@ -69,11 +69,11 @@
             this.butLoginAuth.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.butLoginAuth.ForeColor = System.Drawing.Color.White;
             this.butLoginAuth.IndicateFocus = true;
-            this.butLoginAuth.Location = new System.Drawing.Point(152, 376);
+            this.butLoginAuth.Location = new System.Drawing.Point(96, 372);
             this.butLoginAuth.Name = "butLoginAuth";
-            this.butLoginAuth.Size = new System.Drawing.Size(180, 45);
+            this.butLoginAuth.Size = new System.Drawing.Size(147, 45);
             this.butLoginAuth.TabIndex = 3;
-            this.butLoginAuth.Text = "Entrar";
+            this.butLoginAuth.Text = "Login";
             this.butLoginAuth.Click += new System.EventHandler(this.butLoginAuth_Click);
             // 
             // guna2VSeparator1
@@ -204,6 +204,7 @@
             this.txtBoxMSGToSend.SelectedText = "";
             this.txtBoxMSGToSend.Size = new System.Drawing.Size(335, 48);
             this.txtBoxMSGToSend.TabIndex = 5;
+            this.txtBoxMSGToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxMSGToSend_KeyPress);
             // 
             // txtBoxDestination
             // 
@@ -226,6 +227,7 @@
             this.txtBoxDestination.SelectedText = "";
             this.txtBoxDestination.Size = new System.Drawing.Size(116, 48);
             this.txtBoxDestination.TabIndex = 4;
+            this.txtBoxDestination.TextChanged += new System.EventHandler(this.txtBoxDestination_TextChanged);
             this.txtBoxDestination.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDestination_KeyPress);
             // 
             // label1
@@ -239,23 +241,23 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Receptor:";
             // 
-            // butConnectToServer
+            // butLogout
             // 
-            this.butConnectToServer.BorderRadius = 7;
-            this.butConnectToServer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.butConnectToServer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.butConnectToServer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.butConnectToServer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.butConnectToServer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(94)))), ((int)(((byte)(112)))));
-            this.butConnectToServer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.butConnectToServer.ForeColor = System.Drawing.Color.White;
-            this.butConnectToServer.IndicateFocus = true;
-            this.butConnectToServer.Location = new System.Drawing.Point(337, 71);
-            this.butConnectToServer.Name = "butConnectToServer";
-            this.butConnectToServer.Size = new System.Drawing.Size(180, 45);
-            this.butConnectToServer.TabIndex = 0;
-            this.butConnectToServer.Text = "Connectar ao Servidor";
-            this.butConnectToServer.Click += new System.EventHandler(this.butConnectToServer_Click);
+            this.butLogout.BorderRadius = 7;
+            this.butLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.butLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.butLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.butLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.butLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(94)))), ((int)(((byte)(112)))));
+            this.butLogout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.butLogout.ForeColor = System.Drawing.Color.White;
+            this.butLogout.IndicateFocus = true;
+            this.butLogout.Location = new System.Drawing.Point(258, 372);
+            this.butLogout.Name = "butLogout";
+            this.butLogout.Size = new System.Drawing.Size(147, 45);
+            this.butLogout.TabIndex = 0;
+            this.butLogout.Text = "Logout";
+            this.butLogout.Click += new System.EventHandler(this.butLogout_Click);
             // 
             // lbConnectionState
             // 
@@ -306,7 +308,7 @@
             this.Controls.Add(this.butRequestUserList);
             this.Controls.Add(this.listViewOnlineUsers);
             this.Controls.Add(this.lbConnectionState);
-            this.Controls.Add(this.butConnectToServer);
+            this.Controls.Add(this.butLogout);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBoxDestination);
             this.Controls.Add(this.txtBoxMSGToSend);
@@ -340,7 +342,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBoxMSGToSend;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxDestination;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button butConnectToServer;
+        private Guna.UI2.WinForms.Guna2Button butLogout;
         private System.Windows.Forms.Label lbConnectionState;
         private System.Windows.Forms.ListView listViewOnlineUsers;
         private Guna.UI2.WinForms.Guna2Button butRequestUserList;

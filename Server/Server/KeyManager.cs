@@ -35,9 +35,9 @@ namespace Cliente1
         }
 
         // Verificação da assinatura com a chave pública
-        public static bool VerifySignature(byte[] originalData, byte[] signature)
+        public static bool VerifySignature(byte[] originalData, byte[] signature, string otherPublicKey)
         {
-            rsaProvider.FromXmlString(publicKey);
+            rsaProvider.FromXmlString(otherPublicKey);
             return rsaProvider.VerifyData(originalData, CryptoConfig.MapNameToOID("SHA256"), signature);
         }
 
