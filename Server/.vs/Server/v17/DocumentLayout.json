@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\server\\server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\keymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|c:\\users\\conra\\desktop\\ipl\\1-ano\\2-semestre\\security\\projeto\\server\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED02D6A-D317-45ED-8915-450FA6946181}|Server\\Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,27 +25,31 @@
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "KeyManager.cs",
               "DocumentMoniker": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\KeyManager.cs",
               "RelativeDocumentMoniker": "Server\\KeyManager.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\KeyManager.cs",
               "RelativeToolTip": "Server\\KeyManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAiwCcAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAArwDAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T10:05:37.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\Program.cs",
               "RelativeDocumentMoniker": "Server\\Program.cs",
               "ToolTip": "C:\\Users\\conra\\Desktop\\IPL\\1-ano\\2-Semestre\\security\\Projeto\\Server\\Server\\Program.cs",
               "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAJUBAAAAAAAAAAAgwI4AAABaAAAAAAAAAA==",
+              "ViewState": "AgIAADoBAAAAAAAAAAAQwEYBAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T09:05:50.211Z",
               "EditorCaption": ""

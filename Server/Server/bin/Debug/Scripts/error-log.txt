@@ -825,3 +825,12 @@ Exception: Variable publicKey has no value defined
 [INFO] Beginning database upgrade
 [INFO] Executing Database Server script '002-insert-msg.sql'
 [INFO] Upgrade successful
+[INFO] Beginning database upgrade
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Upgrade successful
+[INFO] Beginning database upgrade
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Upgrade successful
+[INFO] Beginning database upgrade
+[INFO] Executing Database Server script '001-insert-user.sql'
+[INFO] Upgrade successful
